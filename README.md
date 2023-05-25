@@ -76,6 +76,20 @@ npm run dev
 
 More information about nodemon is available at the following link [nodemon](https://www.npmjs.com/package/nodemon)
 
+## Inquirer
+
+Inquirer is a library that makes it easy to make CLI apps.
+
+The interactive menu of the app is built with ```inquirer.js```
+
+### Installation
+
+```bash
+npm i inquirer
+```
+
+More information about the inquirer is available at the following link [inquirer](https://www.npmjs.com/package/inquirer)
+
 ## License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
