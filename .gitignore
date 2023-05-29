@@ -12,6 +12,9 @@ node_modules/
 jspm_packages/
 package-lock.json
 
+# File with created tasks
+*.json
+
 # Optional npm cache directory
 .npm
 
