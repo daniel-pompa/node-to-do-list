@@ -1,6 +1,7 @@
 import 'colors';
 
 import { menu, pause, input } from './helpers/inquirer.js';
+import { saveInDataBase } from './helpers/saveFile.js';
 import Tasks from './models/tasks.js';
 
 const main = async () => {
@@ -20,6 +21,9 @@ const main = async () => {
         console.log(tasks.arrayList);
         break;
     }
+
+    // Save tasks in a JSON file
+    saveInDataBase(tasks.arrayList);
 
     if (option !== '0') await pause();
   } while (option !== '0');
