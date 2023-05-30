@@ -1,12 +1,18 @@
 import 'colors';
 
 import { menu, pause, input } from './helpers/inquirer.js';
-import { saveInDataBase } from './helpers/saveFile.js';
+import { readDataBaseFile, saveInDataBase } from './helpers/saveFile.js';
 import Tasks from './models/tasks.js';
 
 const main = async () => {
   let option = '';
   const tasks = new Tasks();
+
+  const databaseTasks = readDataBaseFile();
+
+  if (databaseTasks) {
+    tasks.loadTasksFromArray(databaseTasks);
+  }
 
   do {
     option = await menu();
@@ -18,7 +24,13 @@ const main = async () => {
         break;
 
       case '2':
-        console.log(tasks.arrayList);
+        tasks.list();
+        break;
+      case '3':
+        // TODO list completed tasks
+        break;
+      case '4':
+        // TODO to-do list
         break;
     }
 
