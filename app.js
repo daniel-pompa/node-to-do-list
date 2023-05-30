@@ -27,10 +27,10 @@ const main = async () => {
         tasks.list();
         break;
       case '3':
-        // TODO list completed tasks
+        tasks.listPendingCompleted(true);
         break;
       case '4':
-        // TODO to-do list
+        tasks.listPendingCompleted(false);
         break;
     }
 

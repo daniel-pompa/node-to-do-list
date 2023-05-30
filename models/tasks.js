@@ -1,5 +1,5 @@
-import Task from './task.js';
 import 'colors';
+import Task from './task.js';
 
 class Tasks {
   constructor() {
@@ -31,10 +31,35 @@ class Tasks {
 
   list() {
     this.arrayList.forEach((task, i) => {
-      const index = `${i + 1}`.green;
+      const index = `${i + 1}`;
       const { description, completed } = task;
       const status = completed ? 'Completada'.green : 'Pendiente'.red;
-      console.log(`${index}. ${description} :: ${status}`);
+
+      if (completed) {
+        console.log(`${index} ${description} :: ${status}`.green);
+      } else {
+        console.log(`${index} ${description} :: ${status}`.red);
+      }
+    });
+  }
+
+  listPendingCompleted(tasksCompleted = true) {
+    let index = 0;
+    this.arrayList.forEach(task => {
+      const { description, completed } = task;
+      const status = completed ? 'Completada'.green : 'Pendiente'.red;
+
+      if (tasksCompleted) {
+        if (completed) {
+          index += 1;
+          console.log(`${index.toString()} ${description} :: ${status}`.green);
+        }
+      } else {
+        if (!completed) {
+          index += 1;
+          console.log(`${index.toString()} ${description} :: ${status}`.red);
+        }
+      }
     });
   }
 }
