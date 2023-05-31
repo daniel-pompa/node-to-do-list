@@ -52,7 +52,7 @@ class Tasks {
       if (tasksCompleted) {
         if (completed) {
           counter += 1;
-          console.log(`${(counter + '.').green} ${description} :: ${status}`);
+          console.log(`${(counter + '.').green} ${description} :: ${completed.green}`);
         }
       } else {
         if (!completed) {
@@ -67,6 +67,21 @@ class Tasks {
     if (this.taskList[id]) {
       delete this.taskList[id];
     }
+  }
+
+  toggleCompleted(ids = []) {
+    ids.forEach(id => {
+      const task = this.taskList[id];
+      if (!task.completed) {
+        task.completed = new Date().toLocaleDateString();
+      }
+    });
+
+    this.arrayList.forEach(task => {
+      if (!ids.includes(task.id)) {
+        this.taskList[task.id].completed = null;
+      }
+    });
   }
 }
 

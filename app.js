@@ -1,6 +1,13 @@
 import 'colors';
 
-import { menu, pause, input, deleteTasks, confirm } from './helpers/inquirer.js';
+import {
+  menu,
+  pause,
+  input,
+  deleteTasks,
+  confirm,
+  checkList,
+} from './helpers/inquirer.js';
 import { readDataBaseFile, saveInDataBase } from './helpers/saveFile.js';
 import Tasks from './models/tasks.js';
 
@@ -22,7 +29,6 @@ const main = async () => {
         const description = await input('Descripción:');
         tasks.createTask(description);
         break;
-
       case '2':
         tasks.list();
         break;
@@ -31,6 +37,10 @@ const main = async () => {
         break;
       case '4':
         tasks.listPendingCompleted(false);
+        break;
+      case '5':
+        const ids = await checkList(tasks.arrayList);
+        tasks.toggleCompleted(ids);
         break;
       case '6':
         const id = await deleteTasks(tasks.arrayList);
