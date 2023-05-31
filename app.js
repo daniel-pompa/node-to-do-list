@@ -1,6 +1,6 @@
 import 'colors';
 
-import { menu, pause, input } from './helpers/inquirer.js';
+import { menu, pause, input, deleteTasks, confirm } from './helpers/inquirer.js';
 import { readDataBaseFile, saveInDataBase } from './helpers/saveFile.js';
 import Tasks from './models/tasks.js';
 
@@ -31,6 +31,16 @@ const main = async () => {
         break;
       case '4':
         tasks.listPendingCompleted(false);
+        break;
+      case '6':
+        const id = await deleteTasks(tasks.arrayList);
+        if (id !== '0') {
+          const ok = await confirm('¿Está seguro que quiere eliminar esta tarea?');
+          if (ok) {
+            tasks.deleteTask(id);
+            console.log('Tarea eliminada correctamente'.green);
+          }
+        }
         break;
     }
 

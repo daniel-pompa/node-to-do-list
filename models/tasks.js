@@ -36,31 +36,37 @@ class Tasks {
       const status = completed ? 'Completada'.green : 'Pendiente'.red;
 
       if (completed) {
-        console.log(`${index} ${description} :: ${status}`.green);
+        console.log(`${(index + '.').green} ${description} :: ${status}`);
       } else {
-        console.log(`${index} ${description} :: ${status}`.red);
+        console.log(`${(index + '.').red} ${description} :: ${status}`);
       }
     });
   }
 
   listPendingCompleted(tasksCompleted = true) {
-    let index = 0;
+    let counter = 0;
     this.arrayList.forEach(task => {
       const { description, completed } = task;
       const status = completed ? 'Completada'.green : 'Pendiente'.red;
 
       if (tasksCompleted) {
         if (completed) {
-          index += 1;
-          console.log(`${index.toString()} ${description} :: ${status}`.green);
+          counter += 1;
+          console.log(`${(counter + '.').green} ${description} :: ${status}`);
         }
       } else {
         if (!completed) {
-          index += 1;
-          console.log(`${index.toString()} ${description} :: ${status}`.red);
+          counter += 1;
+          console.log(`${(counter + '.').red} ${description} :: ${status}`);
         }
       }
     });
+  }
+
+  deleteTask(id = '') {
+    if (this.taskList[id]) {
+      delete this.taskList[id];
+    }
   }
 }
 
