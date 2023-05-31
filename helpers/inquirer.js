@@ -1,6 +1,7 @@
 import 'colors';
 import inquirer from 'inquirer';
 
+// Options menu
 const questions = [
   {
     type: 'list',
@@ -61,6 +62,7 @@ const pause = async () => {
   return question;
 };
 
+// Enter task description
 const input = async message => {
   const question = [
     {
@@ -80,6 +82,7 @@ const input = async message => {
   return description;
 };
 
+// Delete task
 const deleteTasks = async (tasks = []) => {
   const choices = tasks.map((task, i) => {
     const index = `${i + 1}`.green;
@@ -109,6 +112,7 @@ const deleteTasks = async (tasks = []) => {
   return id;
 };
 
+// Confirmation message to delete a task
 const confirm = async message => {
   const question = [
     {
@@ -123,6 +127,7 @@ const confirm = async message => {
   return ok;
 };
 
+// Select task(s) to mark as completed or pending
 const checkList = async (tasks = []) => {
   const choices = tasks.map((task, i) => {
     const index = `${i + 1}`.green;
